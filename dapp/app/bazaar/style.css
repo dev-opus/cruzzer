@@ -1,0 +1,28 @@
+.bazaar {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.bazaar .synopsis {
+  border-bottom: 1px solid rgb(203, 205, 207);
+  padding-bottom: 20px;
+}
+
+.bazaar-filter {
+  display: flex;
+  gap: 20px;
+
+  grid-column: span 12;
+}
+
+.bazaar-filter span {
+  font-size: 14px;
+  font-style: italic;
+}
+
+.bazaar-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}

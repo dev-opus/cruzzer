@@ -1,0 +1,39 @@
+.minter {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.minter form {
+  display: flex;
+  flex-direction: column;
+
+  gap: 50px;
+}
+
+.form-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-control.textarea {
+  align-items: flex-start;
+}
+
+.minter form input,
+textarea {
+  width: 60%;
+  line-height: 1.6;
+  padding: 7px;
+}
+
+button {
+  width: 100%;
+  height: 50px;
+}
+
+textarea {
+  resize: none;
+  width: 57%;
+}
