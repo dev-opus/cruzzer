@@ -128,6 +128,7 @@ export default function Bazaar() {
     action: 'buy' | 'list' | 'deList',
     price?: string | number
   ) {
+    console.log({ tokenId, price });
     try {
       if (action === 'buy') {
         await writeContractAsync({
@@ -168,7 +169,7 @@ export default function Bazaar() {
       }
     } catch (error: any) {
       alert(error.message);
-      console.error(error.message);
+      console.error(error);
     }
   }
 
