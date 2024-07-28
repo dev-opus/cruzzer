@@ -151,11 +151,14 @@ export default function Bazaar() {
           return;
         }
 
+        const etherPrice = parseEther(price as string);
+        console.log({ etherPrice });
+
         await writeContractAsync({
           abi: cruzzer.abi,
           address: process.env.NEXT_PUBLIC_CRUZZER_ADDRESS as Address,
           functionName: 'makeNFTSellable',
-          args: [Number(tokenId), parseEther(price as string)],
+          args: [Number(tokenId), etherPrice],
         });
       }
 
