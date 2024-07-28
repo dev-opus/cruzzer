@@ -1,7 +1,13 @@
 'use client';
 import './style.css';
 import { Card } from '@/app/components';
-import { Address, formatEther, formatUnits, parseEther } from 'viem';
+import {
+  Address,
+  formatEther,
+  formatUnits,
+  parseEther,
+  parseUnits,
+} from 'viem';
 import cruzzer from '@/contracts/cruzzer.json';
 import React, { useEffect, useState } from 'react';
 import {
@@ -48,7 +54,7 @@ export default function Bazaar() {
           image: 'https://' + res.image,
           price: formatEther(rawNfts[i].price),
           forSale: rawNfts[i].forSale as boolean,
-          tokenId: formatUnits(rawNfts[i].tokenId, 1),
+          tokenId: formatUnits(rawNfts[i].tokenId, 10),
           creator: rawNfts[i].owner as Address,
         };
 
@@ -129,6 +135,7 @@ export default function Bazaar() {
     price?: string | number
   ) {
     console.log({ tokenId, price });
+
     try {
       if (action === 'buy') {
         await writeContractAsync({
@@ -151,14 +158,11 @@ export default function Bazaar() {
           return;
         }
 
-        const etherPrice = parseEther(price as string);
-        console.log({ etherPrice });
-
         await writeContractAsync({
           abi: cruzzer.abi,
           address: process.env.NEXT_PUBLIC_CRUZZER_ADDRESS as Address,
           functionName: 'makeNFTSellable',
-          args: [Number(tokenId), etherPrice],
+          args: [Number(tokenId), parseEther(price as string)],
         });
       }
 
