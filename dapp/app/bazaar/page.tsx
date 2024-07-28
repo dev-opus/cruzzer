@@ -54,7 +54,7 @@ export default function Bazaar() {
           image: 'https://' + res.image,
           price: formatEther(rawNfts[i].price),
           forSale: rawNfts[i].forSale as boolean,
-          tokenId: parseUnits(rawNfts[i].tokenId, 1),
+          tokenId: Number(rawNfts[i].tokenId),
           creator: rawNfts[i].owner as Address,
         };
 
